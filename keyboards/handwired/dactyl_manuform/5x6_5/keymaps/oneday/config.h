@@ -32,8 +32,9 @@
 #define ENCODERS_PAD_A { F4 }
 #define ENCODERS_PAD_B { F5 }
 
-#undef SOFT_SERIAL_PIN
-#define SOFT_SERIAL_PIN D2
+// DO NOT UNCOMMENT: these lines disable right side of dactyl
+// #undef SOFT_SERIAL_PIN
+// #define SOFT_SERIAL_PIN D2
 
 #undef OLED_TIMEOUT
 #define OLED_TIMEOUT 240000

@@ -89,43 +89,44 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return !try_handle_macro(keycode, record);
 }
 
-void render_led_status(void) {
-    led_t led_state = host_keyboard_led_state();
-    if (led_state.num_lock || led_state.caps_lock || led_state.scroll_lock) {
-        oled_write_P(led_state.num_lock ? PSTR("NUM ") : PSTR("    "), false);
-        oled_write_P(led_state.caps_lock ? PSTR("CAP ") : PSTR("    "), false);
-        oled_write_ln_P(led_state.scroll_lock ? PSTR("SCR ") : PSTR("    "), false);
-    }
-}
+// DO NOT UNCOMMENT: these lines disable right side of dactyl
+// void render_led_status(void) {
+//     led_t led_state = host_keyboard_led_state();
+//     if (led_state.num_lock || led_state.caps_lock || led_state.scroll_lock) {
+//         oled_write_P(led_state.num_lock ? PSTR("NUM ") : PSTR("    "), false);
+//         oled_write_P(led_state.caps_lock ? PSTR("CAP ") : PSTR("    "), false);
+//         oled_write_ln_P(led_state.scroll_lock ? PSTR("SCR ") : PSTR("    "), false);
+//     }
+// }
 
-void render_mods_status(void) {
-    uint8_t mods = get_mods() | get_oneshot_mods();
-    bool    ctrl = mods & MOD_MASK_CTRL;
-    bool    shft = mods & MOD_MASK_SHIFT;
-    bool    alt  = mods & MOD_MASK_ALT;
-    bool    gui  = mods & MOD_MASK_GUI;
+// void render_mods_status(void) {
+//     uint8_t mods = get_mods() | get_oneshot_mods();
+//     bool    ctrl = mods & MOD_MASK_CTRL;
+//     bool    shft = mods & MOD_MASK_SHIFT;
+//     bool    alt  = mods & MOD_MASK_ALT;
+//     bool    gui  = mods & MOD_MASK_GUI;
 
-    oled_write_P(ctrl ? PSTR("CTRL ") : PSTR("     "), false);
-    oled_write_P(shft ? PSTR("SHIFT ") : PSTR("      "), false);
-    oled_write_P(alt ? PSTR("ALT ") : PSTR("    "), false);
-    oled_write_ln_P(gui ? PSTR("GUI ") : PSTR("    "), false);
-}
+//     oled_write_P(ctrl ? PSTR("CTRL ") : PSTR("     "), false);
+//     oled_write_P(shft ? PSTR("SHIFT ") : PSTR("      "), false);
+//     oled_write_P(alt ? PSTR("ALT ") : PSTR("    "), false);
+//     oled_write_ln_P(gui ? PSTR("GUI ") : PSTR("    "), false);
+// }
 
-#define MAX_LINES 8
+// #define MAX_LINES 8
 
-void write_quote(const char* data, const uint8_t num_lines) {
-    uint8_t current_line = 0;
-    for (; current_line < (MAX_LINES - num_lines) / 2; current_line++) {
-        oled_advance_page(true);
-    }
+// void write_quote(const char* data, const uint8_t num_lines) {
+//     uint8_t current_line = 0;
+//     for (; current_line < (MAX_LINES - num_lines) / 2; current_line++) {
+//         oled_advance_page(true);
+//     }
 
-    oled_write_ln_P(data, false);
+//     oled_write_ln_P(data, false);
 
-    for (current_line += num_lines; current_line < MAX_LINES; current_line++)
-    {
-        oled_advance_page(true);
-    }
-}
+//     for (current_line += num_lines; current_line < MAX_LINES; current_line++)
+//     {
+//         oled_advance_page(true);
+//     }
+// }
 
 bool encoder_update_user(uint8_t index, bool clockwise) {
     // On the left, control the volume. On the right, scroll the page
