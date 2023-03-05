@@ -47,15 +47,15 @@ void tap_dance_sym_vim_finished(tap_dance_state_t *state, void *user_data) {
                 reset_oneshot_layer();
                 tap_dance_active = false;
             } else {
-                set_oneshot_layer(SYMB, ONESHOT_START);
+                // set_oneshot_layer(SYMB, ONESHOT_START);
                 tap_dance_active = true;
             }
             break;
         case SINGLE_HOLD:
-            layer_on(SYMB);
+            // layer_on(SYMB);
             break;
         case DOUBLE:
-            layer_on(VIM);
+            // layer_on(VIM);
             break;
     }
 }
@@ -66,10 +66,10 @@ void tap_dance_sym_vim_reset(tap_dance_state_t *state, void *user_data) {
             clear_oneshot_layer_state(ONESHOT_PRESSED);
             break;
         case SINGLE_HOLD:
-            layer_off(SYMB);
+            // layer_off(SYMB);
             break;
         case DOUBLE:
-            layer_off(VIM);
+            // layer_off(VIM);
             break;
     }
 }
