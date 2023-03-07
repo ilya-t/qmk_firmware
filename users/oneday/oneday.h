@@ -37,6 +37,7 @@ enum tap_dance_declarations {
 enum custom_keys {
     DLEFT = SAFE_RANGE,
     DRIGHT,
+    VIM_ZZ,
     PSCREEN_APP
 };
 

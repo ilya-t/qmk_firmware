@@ -125,6 +125,14 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 bool try_handle_macro(uint16_t keycode, keyrecord_t *record) {
     switch (keycode)
     {
+        case VIM_ZZ:
+            if (record->event.pressed) {
+                // when keycode is pressed
+            } else {
+                // when keycode is released
+                SEND_STRING("ZZ\n");
+            }
+            return true;
         case DLEFT:
             if (record->event.pressed)
                 SEND_STRING(SS_LGUI(SS_LALT(SS_TAP(X_LEFT))));
